@@ -458,6 +458,8 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194230}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -531,6 +533,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd688b1e1a82e8b42a297d7eef2e1f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 4
+  keepOnScreen: 1
+  camWidth: 0
+  camHeight: 0
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571201dff6bee8547ade5a1b65e93928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEnemies:
+  - {fileID: 6385404908480969033, guid: e68ab84245cd68d49b4b790dd3b0849f, type: 3}
+  enemySpawnPerSecond: 0.5
+  enemyInsetDefault: 1.5
+  gameRestartDelay: 2
 --- !u!1 &989611390
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +578,6 @@ GameObject:
   - component: {fileID: 989611392}
   - component: {fileID: 989611393}
   - component: {fileID: 989611394}
-  - component: {fileID: 989611395}
   m_Layer: 6
   m_Name: _Hero
   m_TagString: Hero
@@ -616,19 +650,3 @@ MonoBehaviour:
   keepOnScreen: 1
   camWidth: 0
   camHeight: 0
---- !u!114 &989611395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989611390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 571201dff6bee8547ade5a1b65e93928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabEnemies:
-  - {fileID: 6385404908480969033, guid: e68ab84245cd68d49b4b790dd3b0849f, type: 3}
-  enemySpawnPerSecond: 0.5
-  enemyInsetDefault: 1.5

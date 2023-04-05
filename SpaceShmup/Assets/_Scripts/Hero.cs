@@ -54,7 +54,10 @@ public class Hero : MonoBehaviour
         shieldLevel--;
         if (shieldLevel < 0)
         {
+            Main.HERO_DIED();
             Destroy(this.gameObject);
         }
     }
+
+    
 }
