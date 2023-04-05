@@ -47,9 +47,7 @@ public class Enemy : MonoBehaviour
         Move();
         if (pos.y + bndCheck.radius < -bndCheck.camHeight)
         {
-            Vector3 tempPos = pos;
-            tempPos.y = bndCheck.camHeight + 2.5f * bndCheck.radius;
-            pos = tempPos;
+            Destroy(gameObject);
         }
     }
 
