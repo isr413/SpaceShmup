@@ -31,12 +31,12 @@ public class BoundsCheck : MonoBehaviour
         {
             pos.x = -camWidth + radius;
         }
-        if (pos.y + radius > camHeight)
-        {
-            pos.y = camHeight - radius;
-        }
         if (keepOnScreen)
         {
+            if (pos.y + radius > camHeight)
+            {
+                pos.y = camHeight - radius;
+            }
             if (pos.y - radius < -camHeight)
             {
                 pos.y = -camHeight + radius;
