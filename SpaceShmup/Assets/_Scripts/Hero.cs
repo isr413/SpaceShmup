@@ -44,4 +44,17 @@ public class Hero : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(vAxis * pitchMult, hAxis * rollMult, 0);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        Transform rootT = other.gameObject.transform.root;
+        GameObject go = rootT.gameObject;
+        
+        Destroy(go);
+        shieldLevel--;
+        if (shieldLevel < 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
