@@ -12,6 +12,8 @@ public class Hero : MonoBehaviour
     public float speed = 30f;
     public float rollMult = -45f;
     public float pitchMult = 30f;
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 40f;
 
     [Header("Dynamic")]
     [Range(0, 4)]
@@ -43,6 +45,19 @@ public class Hero : MonoBehaviour
         transform.position = pos;
 
         transform.rotation = Quaternion.Euler(vAxis * pitchMult, hAxis * rollMult, 0);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+        }
+    }
+
+    void Fire()
+    {
+        GameObject projGo = Instantiate<GameObject>(projectilePrefab);
+        projGo.transform.position = transform.position;
+        Rigidbody rb = projGo.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.up * projectileSpeed;
     }
 
     void OnTriggerEnter(Collider other)
@@ -54,7 +69,10 @@ public class Hero : MonoBehaviour
         shieldLevel--;
         if (shieldLevel < 0)
         {
+            Main.HERO_DIED();
             Destroy(this.gameObject);
         }
     }
+
+    
 }

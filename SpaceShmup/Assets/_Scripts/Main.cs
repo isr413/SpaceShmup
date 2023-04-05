@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class Main : MonoBehaviour
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = 0.5f;
     public float enemyInsetDefault = 1.5f;
+    public float gameRestartDelay = 2f;
 
     private BoundsCheck bndCheck;
+    private bool heroIsAlive = true;
 
     void Awake()
     {
@@ -24,6 +27,11 @@ public class Main : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        if (!heroIsAlive)
+        {
+            return;
+        }
+
         int ndx = UnityEngine.Random.Range(0, prefabEnemies.Length);
         GameObject go = Instantiate<GameObject>(prefabEnemies[ndx]);
         float enemyInset = enemyInsetDefault;
@@ -45,5 +53,16 @@ public class Main : MonoBehaviour
     void Update()
     {
         
+    }
+
+    static public void HERO_DIED()
+    {
+        S.heroIsAlive = false;
+        S.Invoke(nameof(Restart), S.gameRestartDelay);
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene("__Scene_0");
     }
 }
